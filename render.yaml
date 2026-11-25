@@ -28,7 +28,7 @@ services:
       - key: DJANGO_EMAIL_HOST_PASSWORD
         sync: false
       - key: DJANGO_DEFAULT_FROM_EMAIL
-        value: noreply@mindbridge-rwanda-ctui.onrender.com
+        value: noreply@mindbridge-rwanda-qlzw.onrender.com
       - key: PYTHON_VERSION
         value: "3.12.0"
       - key: DJANGO_SECRET_KEY
