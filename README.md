@@ -145,7 +145,7 @@ static files during the build, seeds the demo accounts, and starts the Django
 app with Gunicorn.
 
 The blueprint sets `DJANGO_DEBUG=False`, generates `DJANGO_SECRET_KEY`, and
-configures `mindbridge-rwanda-ctui.onrender.com`, the current public hostname.
+configures `mindbridge-rwanda-qlzw.onrender.com`, the current public hostname.
 If the deployed hostname changes, update the allowed-host and CSRF-origin
 variables in the Render dashboard before using the app. No
 database migration command needs to be run manually after a successful
@@ -156,7 +156,7 @@ passwords.
 ### Live URL
 
 The deployed application is available at
-<https://mindbridge-rwanda-ctui.onrender.com>.
+<https://mindbridge-rwanda-qlzw.onrender.com>.
 
 ## Roles and privacy
 
