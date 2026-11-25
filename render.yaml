@@ -8,9 +8,9 @@ services:
       - key: DJANGO_DEBUG
         value: "False"
       - key: DJANGO_ALLOWED_HOSTS
-        value: mindbridge-rwanda-ctui.onrender.com
+        value: mindbridge-rwanda-qlzw.onrender.com
       - key: DJANGO_CSRF_TRUSTED_ORIGINS
-        value: https://mindbridge-rwanda-ctui.onrender.com
+        value: https://mindbridge-rwanda-qlzw.onrender.com
       - key: DJANGO_SECURE_SSL_REDIRECT
         value: "True"
       - key: DJANGO_EMAIL_BACKEND
