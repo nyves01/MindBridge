@@ -8,9 +8,9 @@ services:
       - key: DJANGO_DEBUG
         value: "False"
       - key: DJANGO_ALLOWED_HOSTS
-        value: mindbridge-rwanda-qlzw.onrender.com
+        value: mindbridge-rwanda-ctui.onrender.com
       - key: DJANGO_CSRF_TRUSTED_ORIGINS
-        value: https://mindbridge-rwanda-qlzw.onrender.com
+        value: https://mindbridge-rwanda-ctui.onrender.com
       - key: DJANGO_SECURE_SSL_REDIRECT
         value: "True"
       - key: DJANGO_EMAIL_BACKEND
@@ -28,7 +28,7 @@ services:
       - key: DJANGO_EMAIL_HOST_PASSWORD
         sync: false
       - key: DJANGO_DEFAULT_FROM_EMAIL
-        value: noreply@mindbridge-rwanda-qlzw.onrender.com
+        value: noreply@mindbridge-rwanda-ctui.onrender.com
       - key: PYTHON_VERSION
         value: "3.12.0"
       - key: DJANGO_SECRET_KEY
