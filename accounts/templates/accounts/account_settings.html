@@ -1,0 +1,39 @@
+{% extends "core/base.html" %}
+
+{% block title %}Account Settings | MindBridge Rwanda{% endblock %}
+
+{% block content %}
+<section class="page-section">
+    <div class="container">
+        <div class="form-container">
+            <h1>Account and Privacy</h1>
+            <p><strong>Username:</strong> {{ user.username }}</p>
+            <p><strong>Email:</strong> {{ user.email|default:"Not provided" }}</p>
+            <p><strong>Account role:</strong> {{ user.get_role_display }}</p>
+
+            <h2>Security</h2>
+            <p><a href="{% url 'password_change' %}" class="btn btn-primary">Change Password</a></p>
+
+            <h2>Privacy</h2>
+            <p>
+                Your professional application and feedback are private.
+                Public profiles only include approved professionals who
+                consented to directory listing.
+            </p>
+
+            <h2>Deactivate account</h2>
+            <p>
+                Deactivation prevents this account from logging in. It does not
+                delete historical records. An administrator can reactivate it.
+            </p>
+            <form method="post" action="{% url 'deactivate_account' %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-secondary"
+                        onclick="return confirm('Deactivate this account?');">
+                    Deactivate My Account
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

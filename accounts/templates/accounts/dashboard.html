@@ -1,0 +1,153 @@
+
+{% extends "core/base.html" %}
+
+{% block title %}My Dashboard | MindBridge Rwanda{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+    <div class="container hero-content">
+        <div class="hero-text">
+
+            <p class="eyebrow">YOUR PERSONAL SPACE</p>
+
+            <h1>
+                Welcome back,
+                <span>{{ user.username }}.</span>
+            </h1>
+
+            <p class="hero-description">
+                Your well-being matters. Take a moment to explore,
+                learn, reflect, and connect with support whenever
+                you need it.
+            </p>
+
+            <div class="hero-actions">
+                <a href="{% url 'self_awareness' %}" class="btn btn-primary">
+                    Reflect on Your Well-being
+                </a>
+
+                <a href="{% url 'professional_directory' %}" class="btn btn-secondary">
+                    Find Professional Support
+                </a>
+                <a href="{% url 'appointment_list' %}" class="btn btn-secondary">
+                    My Appointments
+                </a>
+                <a href="{% url 'account_settings' %}" class="btn btn-secondary">
+                    Account Settings
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<section class="explore-section">
+    <div class="container">
+
+        <div class="section-heading">
+            <p class="eyebrow">YOUR MINDBRIDGE</p>
+
+            <h2>Explore your well-being resources</h2>
+
+            <p>
+                Discover helpful information and practical ways
+                to support your mental and emotional well-being.
+            </p>
+        </div>
+
+        <div class="feature-grid">
+
+            <article class="feature-card">
+                <h3>Mental Health Education</h3>
+
+                <p>
+                    Learn about mental health, emotional well-being,
+                    and common mental health challenges.
+                </p>
+
+                <a href="{% url 'education' %}">
+                    Explore Education →
+                </a>
+            </article>
+
+
+            <article class="feature-card">
+                <h3>Wellness Tips</h3>
+
+                <p>
+                    Discover simple everyday practices that can
+                    support your well-being.
+                </p>
+
+                <a href="{% url 'wellness_tips' %}">
+                    View Wellness Tips →
+                </a>
+            </article>
+
+
+            <article class="feature-card">
+                <h3>Self-Awareness</h3>
+
+                <p>
+                    Take time to reflect on your emotions,
+                    experiences, and everyday well-being.
+                </p>
+
+                <a href="{% url 'self_awareness' %}">
+                    Start Reflecting →
+                </a>
+            </article>
+
+
+            <article class="feature-card">
+                <h3>Support Someone</h3>
+
+                <p>
+                    Learn how to listen, understand, and support
+                    someone experiencing difficulties.
+                </p>
+
+                <a href="{% url 'support_guide' %}">
+                    Learn How to Help →
+                </a>
+            </article>
+
+
+            <article class="feature-card">
+                <h3>Find Professional Support</h3>
+
+                <p>
+                    Explore the professional directory and learn
+                    about available support options.
+                </p>
+
+                <a href="{% url 'professional_directory' %}">
+                    Find Support →
+                </a>
+            </article>
+
+        </div>
+
+    </div>
+</section>
+
+
+<section class="support-section">
+    <div class="container">
+
+        <p class="eyebrow">YOU ARE NOT ALONE</p>
+
+        <h2>Taking care of yourself is important.</h2>
+
+        <p>
+            MindBridge Rwanda is here to help you access
+            educational resources and discover pathways
+            to appropriate support.
+        </p>
+
+    </div>
+</section>
+
+{% endblock %}

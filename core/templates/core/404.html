@@ -1,0 +1,16 @@
+{% extends "core/base.html" %}
+
+{% block title %}Page Not Found | MindBridge Rwanda{% endblock %}
+
+{% block content %}
+<section class="page-section">
+    <div class="container">
+        <div class="form-container">
+            <p class="eyebrow">404 - PAGE NOT FOUND</p>
+            <h1>We couldn't find that page.</h1>
+            <p>The link may be out of date, or the page may have moved.</p>
+            <a href="{% url 'home' %}" class="btn btn-primary">Go to MindBridge Home</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

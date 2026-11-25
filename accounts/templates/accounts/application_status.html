@@ -1,0 +1,132 @@
+
+{% extends "core/base.html" %}
+
+{% block title %}Application Status | MindBridge Rwanda{% endblock %}
+
+{% block content %}
+
+<section class="page-section">
+    <div class="container">
+
+        <div class="form-container">
+
+            <h1>Your Professional Application</h1>
+
+            {% if application %}
+
+                <p>
+                    Thank you for your interest in becoming a
+                    MindBridge Rwanda professional.
+                </p>
+
+                <div class="application-status">
+
+                    <h2>Application Information</h2>
+
+                    <p>
+                        <strong>Applicant:</strong>
+                        {{ application.full_name }}
+                    </p>
+
+                    <p>
+                        <strong>Professional Title:</strong>
+                        {{ application.professional_title }}
+                    </p>
+
+                    <p>
+                        <strong>Submitted:</strong>
+                        {{ application.submitted_at|date:"F j, Y" }}
+                    </p>
+
+                    <p>
+                        <strong>Current Status:</strong>
+
+                        {% if application.status == "PENDING" %}
+                            <span class="status-pending">Pending Review</span>
+
+                        {% elif application.status == "APPROVED" %}
+                            <span class="status-approved">Approved</span>
+
+                        {% elif application.status == "REJECTED" %}
+                            <span class="status-rejected">Not Approved</span>
+                        {% endif %}
+                    </p>
+
+                </div>
+
+                {% if application.status == "PENDING" %}
+
+                    <div class="application-notice">
+                        <h3>Application Under Review</h3>
+
+                        <p>
+                            Your application has been received and
+                            is awaiting review by the MindBridge
+                            administration team.
+                        </p>
+
+                        <p>
+                            You will be able to check this page
+                            for updates.
+                        </p>
+                    </div>
+
+                {% elif application.status == "APPROVED" %}
+
+                    <div class="application-success">
+                        <h3>Congratulations!</h3>
+
+                        <p>
+                            Your professional application has been
+                            approved by the MindBridge administration team.
+                        </p>
+
+                    </div>
+
+                {% elif application.status == "REJECTED" %}
+
+                    <div class="application-notice">
+                        <h3>Application Not Approved</h3>
+
+                        <p>
+                            Unfortunately, your application was
+                            not approved at this time.
+                        </p>
+
+                        {% if application.administrator_notes %}
+                            <p>
+                                <strong>Administrator Feedback:</strong>
+                                {{ application.administrator_notes }}
+                            </p>
+                        {% endif %}
+                    </div>
+
+                {% endif %}
+
+            {% else %}
+
+                <h2>No Application Found</h2>
+
+                <p>
+                    You have not submitted a professional application yet.
+                </p>
+
+                <a href="{% url 'professional_application' %}"
+                   class="btn btn-primary">
+                    Apply to Become a Professional
+                </a>
+
+            {% endif %}
+
+            <p>
+                <a href="{% url 'dashboard' %}">
+                    Return to Dashboard
+                </a>
+            </p>
+
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,163 @@
+
+{% extends "core/base.html" %}
+
+{% block title %}Home | MindBridge Rwanda{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section class="hero" id="home">
+    <div class="container hero-content">
+
+        <div class="hero-text">
+
+            <p class="eyebrow">
+                YOUR WELL-BEING MATTERS
+            </p>
+
+            <h1>
+                You are not alone.
+                <span>Your well-being comes first.</span>
+            </h1>
+
+            <p class="hero-description">
+                Understanding mental health is an important
+                step towards a healthier life. Discover helpful
+                information, build awareness, and find support
+                when you need it.
+            </p>
+
+            <div class="hero-actions">
+                <a href="#explore" class="btn btn-primary">
+                    Explore MindBridge
+                </a>
+
+                <a href="#about" class="btn btn-secondary">
+                    Learn About Us
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- Introduction -->
+<section class="introduction" id="about">
+    <div class="container">
+
+        <p class="eyebrow">WELCOME TO MINDBRIDGE</p>
+
+        <h2>A place to learn, understand, and connect.</h2>
+
+        <p>
+            MindBridge Rwanda is an educational and support
+            connection platform designed to help young people
+            understand mental health, recognise when they may
+            need support, and discover ways to access it.
+        </p>
+
+    </div>
+</section>
+
+
+<!-- Platform Features -->
+<section class="explore-section" id="explore">
+    <div class="container">
+
+        <div class="section-heading">
+            <p class="eyebrow">DISCOVER MINDBRIDGE</p>
+
+            <h2>Small steps towards better well-being.</h2>
+
+            <p>
+                Explore resources designed to help you understand
+                yourself and support the people around you.
+            </p>
+        </div>
+
+        <div class="feature-grid">
+
+            <article class="feature-card">
+                <h3>Mental Health Education</h3>
+                <p>
+                    Learn about mental health through simple,
+                    accessible, and informative resources.
+                </p>
+                <a href="{% url 'education' %}">Explore learning resources</a>
+            </article>
+
+            <article class="feature-card">
+                <h3>Understand Your Well-being</h3>
+                <p>
+                    Discover general self-awareness resources
+                    that can help you reflect on your well-being.
+                </p>
+                <a href="{% url 'self_awareness' %}">Learn more</a>
+            </article>
+
+
+            <article class="feature-card">
+                <h3>Daily Wellness Tips</h3>
+                <p>
+                    Find practical everyday ideas that encourage
+                    healthy habits and personal well-being.
+                </p>
+                <a href="{% url 'wellness_tips' %}">Discover tips</a>
+            </article>
+
+            <article class="feature-card">
+                <h3>Support Someone</h3>
+                <p>
+                    Learn how to listen, show understanding,
+                    and support someone who may be struggling.
+                </p>
+                <a href="{% url 'support_guide' %}">Explore support guides</a>
+            </article>
+
+            <article class="feature-card">
+                <h3>Find Professional Support</h3>
+                <p>
+                    Discover information about mental health
+                    professionals and available support services.
+                </p>
+                <a href="{% url 'professional_directory' %}">Find support</a>
+            </article>
+
+            <article class="feature-card">
+                <h3>Build Awareness</h3>
+                <p>
+                    Challenge stigma and help create a community
+                    where conversations about mental health
+                    are welcomed.
+                </p>
+                <a href="#about">Our mission</a>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- Support Message -->
+<section class="support-section" id="support">
+    <div class="container">
+
+        <p class="eyebrow">YOU DESERVE SUPPORT</p>
+
+        <h2>Asking for help is a sign of strength.</h2>
+
+        <p>
+            Whether you want to learn more, understand your
+            well-being, or explore professional support,
+            taking the first step matters.
+        </p>
+
+        <p>
+            You do not have to face difficult moments alone.
+        </p>
+
+    </div>
+</section>
+
+{% endblock %}

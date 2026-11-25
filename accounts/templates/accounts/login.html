@@ -1,0 +1,42 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+
+<section class="page-section">
+    <div class="container">
+        <div class="section-heading">
+            <h1>Welcome Back</h1>
+            <p>Log in to your MindBridge Rwanda account to continue.</p>
+        </div>
+
+        <div class="content-card">
+            <form method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ next }}">
+
+                {% if form.errors %}
+                    <div class="form-errors">
+                        <h3>Please correct the following errors:</h3>
+                        {{ form.errors }}
+                    </div>
+                {% endif %}
+                        
+                {{ form.as_p }}
+
+                <button type="submit" class="btn btn-primary">
+                    Log In
+                </button>
+            </form>
+
+            <p>
+                Don't have an account?
+                <a href="{% url 'register' %}">Create an account</a>.
+            </p>
+            <p>
+                <a href="{% url 'password_reset' %}">Forgot your password?</a>
+            </p>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

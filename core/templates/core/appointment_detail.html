@@ -1,0 +1,62 @@
+{% extends "core/base.html" %}
+
+{% block title %}Appointment Details | MindBridge Rwanda{% endblock %}
+
+{% block content %}
+<section class="page-section">
+    <div class="container">
+        <div class="form-container">
+            <h1>Appointment details</h1>
+            <p><strong>Status:</strong> {{ appointment.get_status_display }}</p>
+            <p><strong>Requester:</strong> {{ appointment.requester.username }}</p>
+            <p><strong>Professional:</strong> {{ appointment.professional.full_name }}</p>
+            <p><strong>Requested date:</strong> {{ appointment.requested_date|date:"F j, Y" }}</p>
+            <p><strong>Requested time:</strong> {{ appointment.requested_time|time:"P" }}</p>
+
+            {% if is_professional %}
+                <div class="appointment-actions">
+                    {% if appointment.status == "PENDING" %}
+                        <form method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="action" value="accept">
+                            <button type="submit" class="btn btn-primary">Accept</button>
+                        </form>
+                        <form method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="action" value="reject">
+                            <button type="submit" class="btn btn-secondary">Reject</button>
+                        </form>
+                    {% endif %}
+                    {% if appointment.status == "PENDING" or appointment.status == "ACCEPTED" %}
+                        <form method="post" class="reschedule-form">
+                            {% csrf_token %}
+                            <input type="hidden" name="action" value="reschedule">
+                            {{ reschedule_form.as_p }}
+                            <button type="submit" class="btn btn-secondary">Propose Reschedule</button>
+                        </form>
+                    {% endif %}
+                </div>
+            {% endif %}
+
+            {% if user == appointment.requester %}
+                {% if appointment.status == "RESCHEDULE_PROPOSED" %}
+                    <p><strong>Proposed date:</strong> {{ appointment.proposed_date|date:"F j, Y" }}</p>
+                    <p><strong>Proposed time:</strong> {{ appointment.proposed_time|time:"P" }}</p>
+                    <form method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="action" value="confirm_reschedule">
+                        <button type="submit" class="btn btn-primary">Accept Proposed Time</button>
+                    </form>
+                {% endif %}
+                {% if appointment.status == "PENDING" or appointment.status == "ACCEPTED" or appointment.status == "RESCHEDULE_PROPOSED" %}
+                    <form method="post" class="inline-form">
+                        {% csrf_token %}
+                        <input type="hidden" name="action" value="cancel">
+                        <button type="submit" class="btn btn-secondary">Cancel Request</button>
+                    </form>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock %}

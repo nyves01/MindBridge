@@ -1,0 +1,33 @@
+{% extends "core/base.html" %}
+
+{% block title %}Request Appointment | MindBridge Rwanda{% endblock %}
+
+{% block content %}
+<section class="page-section">
+    <div class="container">
+        <div class="form-container">
+            <h1>Request an appointment</h1>
+            <p>
+                Requesting an appointment does not confirm it.
+                {{ professional.full_name }} must accept or respond to the request.
+            </p>
+            <p>Please do not provide personal or health details. This form only collects a preferred date and time.</p>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+                <div class="form-group">
+                    <label for="{{ form.requested_date.id_for_label }}">Preferred date</label>
+                    {{ form.requested_date }}
+                    {{ form.requested_date.errors }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.requested_time.id_for_label }}">Preferred time</label>
+                    {{ form.requested_time }}
+                    {{ form.requested_time.errors }}
+                </div>
+                <button type="submit" class="btn btn-primary">Submit Request</button>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

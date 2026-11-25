@@ -1,0 +1,50 @@
+{% extends "core/base.html" %}
+
+{% block title %}Appointments | MindBridge Rwanda{% endblock %}
+
+{% block content %}
+<section class="page-section">
+    <div class="container">
+        <div class="form-container wide-container">
+            <h1>Appointments</h1>
+
+            {% if notifications %}
+                <h2>Updates</h2>
+                <ul class="notification-list">
+                    {% for notification in notifications %}
+                        <li>{{ notification.message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            {% if is_professional %}
+                <h2>Requests addressed to you</h2>
+                {% if received %}
+                    {% for appointment in received %}
+                        <article class="status-card">
+                            <p><strong>{{ appointment.requester.username }}</strong> - {{ appointment.requested_date|date:"F j, Y" }} at {{ appointment.requested_time|time:"P" }}</p>
+                            <p>{{ appointment.get_status_display }}</p>
+                            <a href="{% url 'appointment_detail' appointment.pk %}" class="btn btn-secondary">View</a>
+                        </article>
+                    {% endfor %}
+                {% else %}
+                    <p>No appointment requests yet.</p>
+                {% endif %}
+            {% endif %}
+
+            <h2>Your requests</h2>
+            {% if requested %}
+                {% for appointment in requested %}
+                    <article class="status-card">
+                        <p><strong>{{ appointment.professional.full_name }}</strong> - {{ appointment.requested_date|date:"F j, Y" }} at {{ appointment.requested_time|time:"P" }}</p>
+                        <p>{{ appointment.get_status_display }}</p>
+                        <a href="{% url 'appointment_detail' appointment.pk %}" class="btn btn-secondary">View</a>
+                    </article>
+                {% endfor %}
+            {% else %}
+                <p>You have not requested an appointment.</p>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock %}

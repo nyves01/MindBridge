@@ -1,0 +1,151 @@
+
+{% extends "core/base.html" %}
+
+{% block title %}Self-Awareness | MindBridge Rwanda{% endblock %}
+
+{% block content %}
+
+<!-- INTRODUCTION -->
+<section class="introduction">
+    <div class="container">
+
+        <p class="eyebrow">UNDERSTAND YOURSELF</p>
+
+        <h1>Take a moment for yourself.</h1>
+
+        <p>
+            Understanding how you feel is an important part
+            of caring for your well-being. Give yourself a
+            little time to reflect on your emotions, energy,
+            and everyday experiences.
+        </p>
+
+    </div>
+</section>
+
+
+<!-- SELF-AWARENESS INTRODUCTION -->
+ 
+<section class="explore-section">
+    <div class="container">
+
+        <div class="section-heading">
+
+            <p class="eyebrow">YOUR PERSONAL REFLECTION</p>
+
+            <h2>How have you been feeling lately?</h2>
+
+            <p>
+                The following questions can help you reflect
+                on your emotional well-being over the past
+                seven days.
+            </p>
+
+        </div>
+
+
+        <!-- REFLECTION QUESTIONNAIRE -->
+        <form id="self-awareness-form" class="reflection-form" method="post">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+
+            <div class="reflection-question">
+
+                <h3>1. How would you describe your mood recently?</h3>
+
+                {% for radio in form.mood %}
+                    <label class="reflection-option">{{ radio.tag }} {{ radio.choice_label }}</label>
+                {% endfor %}
+                {{ form.mood.errors }}
+
+            </div>
+
+
+            <div class="reflection-question">
+
+                <h3>2. How has your energy been?</h3>
+
+                {% for radio in form.energy %}
+                    <label class="reflection-option">{{ radio.tag }} {{ radio.choice_label }}</label>
+                {% endfor %}
+                {{ form.energy.errors }}
+
+            </div>
+
+
+            <div class="reflection-question">
+
+                <h3>3. How have you been managing everyday stress?</h3>
+
+                {% for radio in form.stress %}
+                    <label class="reflection-option">{{ radio.tag }} {{ radio.choice_label }}</label>
+                {% endfor %}
+                {{ form.stress.errors }}
+
+            </div>
+
+
+            <div class="reflection-question">
+
+                <h3>4. How connected have you felt to other people?</h3>
+
+                {% for radio in form.connection %}
+                    <label class="reflection-option">{{ radio.tag }} {{ radio.choice_label }}</label>
+                {% endfor %}
+                {{ form.connection.errors }}
+
+            </div>
+
+
+            <p class="footer-disclaimer">
+                This reflection is for personal awareness and
+                educational purposes only. It is not a mental health test
+                or a diagnosis. The reflection stores your submitted answers
+                with your account so you can review the result.
+            </p>
+
+            <button type="submit" class="btn btn-primary">
+                Complete My Reflection
+            </button>
+
+        </form>
+
+        <!-- REFLECTION FEEDBACK -->
+        {% if result %}
+            <div id="reflection-result" class="feature-card">
+                <h2>{{ result.heading }}</h2>
+                <p>{{ result.guidance }}</p>
+                <p>
+                    <strong>This is not a diagnosis.</strong> This reflection
+                    is for personal awareness and educational purposes only.
+                </p>
+            </div>
+        {% endif %}
+
+    </div>
+</section>
+
+
+<!-- SUPPORT SECTION -->
+<section class="support-section">
+    <div class="container">
+
+        <h2>You don't have to figure everything out alone.</h2>
+
+        <p>
+            Understanding yourself is one step. Connecting
+            with others and finding appropriate support can
+            also make a difference.
+        </p>
+
+        <a href="{% url 'professional_directory' %}"
+           class="btn btn-primary">
+            Explore Professional Support
+        </a>
+
+    </div>
+</section>
+
+
+
+{% endblock %}

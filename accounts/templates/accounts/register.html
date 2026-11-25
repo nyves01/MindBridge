@@ -1,0 +1,51 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+
+<section class="page-section">
+    <div class="container">
+        <div class="section-heading">
+            <h1>Create Your MindBridge Account</h1>
+            <p>Join MindBridge Rwanda and take a step towards understanding and caring for your well-being.</p>
+        </div>
+
+        <div class="content-card">
+            <form method="POST">
+                {% csrf_token %}
+
+                {% if form.errors %}
+                    <div class="form-errors">
+        <h3>Please correct the following errors:</h3>
+        {{ form.errors }}
+    </div>
+{% endif %}
+
+{% for field in form %}
+    {% if field.name == "privacy_consent" %}
+        <p>
+            MindBridge uses your account information to provide its features.
+            Your professional applications, feedback, and appointment details
+            are protected and are not shown publicly.
+        </p>
+    {% endif %}
+    <p>
+        {{ field.label_tag }}
+        {{ field }}
+        {{ field.errors }}
+    </p>
+{% endfor %}
+
+                <button type="submit" class="btn btn-primary">
+                    Create Account
+                </button>
+            </form>
+
+            <p>
+                Already have an account?
+                <a href="{% url 'login' %}">Log in here</a>.
+            </p>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

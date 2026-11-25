@@ -1,0 +1,24 @@
+{% extends "core/base.html" %}
+
+{% block title %}Feedback | MindBridge Rwanda{% endblock %}
+
+{% block content %}
+<section class="page-section">
+    <div class="container">
+        <div class="form-container">
+            <h1>Private Feedback</h1>
+            <p>Choose the category that best describes your feedback. Please do not include personal or health details.</p>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+                <div class="form-group">
+                    {{ form.category.label_tag }}
+                    {{ form.category }}
+                    {{ form.category.errors }}
+                </div>
+                <button type="submit" class="btn btn-primary">Submit Feedback</button>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

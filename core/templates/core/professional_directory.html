@@ -1,0 +1,100 @@
+{% extends "core/base.html" %}
+
+{% block title %}Find Professional Support | MindBridge Rwanda{% endblock %}
+
+{% block content %}
+
+<section class="introduction">
+    <div class="container">
+
+        <p class="eyebrow">FIND PROFESSIONAL SUPPORT</p>
+
+        <h1>Connecting you with professional support.</h1>
+
+        <p>
+            Finding the right support can be an important step
+            towards better well-being. Explore information about
+            mental health professionals and available services.
+        </p>
+
+    </div>
+</section>
+
+
+<section class="explore-section">
+    <div class="container">
+
+        <div class="section-heading">
+            <p class="eyebrow">OUR PROFESSIONAL DIRECTORY</p>
+            <h2>Available professionals</h2>
+            <p>
+                Profiles below are limited to approved applications
+                from professionals who have consented to directory listing.
+            </p>
+        </div>
+
+        <form method="get" class="directory-search">
+            <div class="form-group">
+                <label for="q">Search name or qualifications</label>
+                <input id="q" name="q" type="search" value="{{ query }}">
+            </div>
+            <div class="form-group">
+                <label for="title">Professional title</label>
+                <input id="title" name="title" type="text" value="{{ title }}">
+            </div>
+            <div class="form-group">
+                <label for="organisation">Organisation</label>
+                <input id="organisation" name="organisation" type="text" value="{{ organisation }}">
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+
+        {% if professionals %}
+            <div class="feature-grid">
+                {% for professional in professionals %}
+                    <article class="feature-card">
+                        <h3>{{ professional.full_name }}</h3>
+                        <p><strong>{{ professional.professional_title }}</strong></p>
+                        {% if professional.organisation %}
+                            <p>{{ professional.organisation }}</p>
+                        {% endif %}
+                        <p><strong>Qualifications</strong><br>{{ professional.qualifications }}</p>
+                        {% if professional.years_experience %}
+                            <p>{{ professional.years_experience }} years of experience</p>
+                        {% endif %}
+                        <p>{{ professional.biography }}</p>
+                        <a href="{% url 'appointment_request' professional.pk %}" class="btn btn-primary">
+                            Request Appointment
+                        </a>
+                    </article>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="feature-card">
+                <h3>No matching professionals found</h3>
+                <p>
+                    No approved, directory-consenting professionals match your
+                    search. Try clearing a filter.
+                </p>
+            </div>
+        {% endif %}
+
+    </div>
+</section>
+
+
+<section class="support-section">
+    <div class="container">
+
+        <h2>Your well-being matters.</h2>
+
+        <p>
+            MindBridge Rwanda helps people discover information
+            and connections to support. It does not provide
+            diagnoses or replace qualified healthcare professionals.
+        </p>
+
+    </div>
+</section>
+
+{% endblock %}

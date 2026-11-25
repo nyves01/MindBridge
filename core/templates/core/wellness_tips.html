@@ -1,0 +1,109 @@
+
+{% extends "core/base.html" %}
+
+{% block title %}Daily Wellness Tips | MindBridge Rwanda{% endblock %}
+
+{% block content %}
+
+<!-- Wellness Hero -->
+<section class="hero">
+    <div class="container hero-content">
+        <div class="hero-text">
+
+            <p class="eyebrow">SMALL STEPS, EVERY DAY</p>
+
+            <h1>
+                Take care of yourself.
+                <span>Your well-being matters.</span>
+            </h1>
+
+            <p class="hero-description">
+                Discover simple everyday ideas that can help
+                you build healthy routines, care for yourself,
+                and support your overall well-being.
+            </p>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- Introduction -->
+<section class="introduction">
+    <div class="container">
+
+        <p class="eyebrow">YOUR DAILY WELL-BEING</p>
+
+        <h2>Well-being is built through small steps.</h2>
+
+        <p>
+            Taking care of yourself does not require perfection.
+            Small, realistic actions in everyday life can help
+            support your physical, emotional, and social well-being.
+        </p>
+
+    </div>
+</section>
+
+
+<!-- Wellness Tips -->
+<section class="explore-section">
+    <div class="container">
+
+        <div class="section-heading">
+            <p class="eyebrow">PRACTICAL WELLNESS IDEAS</p>
+
+            <h2>Simple ways to care for yourself.</h2>
+
+            <p>
+                Explore these general well-being suggestions
+                and choose what feels realistic for your daily life.
+            </p>
+        </div>
+
+        <div class="feature-grid">
+            <article class="feature-card">
+                <h3>{{ tip.title }}</h3>
+                <p>{{ tip.description }}</p>
+            </article>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- Encouragement -->
+<section class="support-section">
+    <div class="container">
+
+        <p class="eyebrow">BE KIND TO YOURSELF</p>
+
+        <h2>Progress does not have to be perfect.</h2>
+
+        <p>
+            Everyone's circumstances are different.
+            Choose small steps that work for you, and remember
+            that asking for support is always okay.
+        </p>
+
+    </div>
+</section>
+
+
+<!-- Disclaimer -->
+<section class="introduction">
+    <div class="container">
+
+        <h2>A gentle reminder</h2>
+
+        <p>
+            These suggestions are general educational information.
+            They are not medical advice, diagnosis, or treatment.
+            If you have concerns about your health or well-being,
+            consider speaking with a qualified healthcare professional.
+        </p>
+
+    </div>
+</section>
+
+{% endblock %}
